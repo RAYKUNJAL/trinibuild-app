@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-TT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="TriniBuild — AI store builder for Trinidad & Tobago. Take a photo, AI lists it. 5 free listings for life. Sell street food, fresh catch, or anything. Cash on Pickup + PayPal. Professional templates." />
+  <meta name="keywords" content="Trinidad website builder, AI listing, free online store Trinidad, doubles, roti, fresh fish, Shopify alternative TT, PayPal COD" />
+  <meta name="geo.region" content="TT" />
+  <meta name="geo.placename" content="Trinidad and Tobago" />
+  <link rel="canonical" href="https://trinibuild.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TriniBuild — AI Store Builder · 5 Free Listings for Life" />
+  <meta property="og:description" content="Snap a photo. AI writes the listing. Sell with Cash or PayPal. Built for Trinidad & Tobago." />
+  <meta property="og:locale" content="en_TT" />
+  <title>TriniBuild | AI Store Builder for Trinidad & Tobago — 5 Free Listings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0b1220',
+            cyan: '#00b4d8',
+            coral: '#ff6b6b',
+            amber: '#f59e0b',
+            surface: '#151d2e',
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --safe-bottom: env(safe-area-inset-bottom, 0px); }
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: Inter, system-ui, sans-serif; background: #0b1220; color: #f1f5f9; }
+    .gradient-text {
+      background: linear-gradient(135deg, #00b4d8 0%, #34d399 50%, #ff6b6b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-glow {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 180, 216, 0.25), transparent);
+    }
+    .card-hover { transition: transform 0.2s, border-color 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); border-color: rgba(0, 180, 216, 0.4); }
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "TriniBuild",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "5 free listings for life"
+    },
+    "areaServed": { "@type": "Country", "name": "Trinidad and Tobago" },
+    "description": "AI-powered store builder and marketplace for Trinidad & Tobago. Photo to listing, Cash on Pickup and PayPal."
+  }
+  </script>
+</head>
+<body class="min-h-screen antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-navy/90 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan to-coral flex items-center justify-center font-bold text-navy text-xs">TB</div>
+        <span class="font-bold text-sm tracking-tight">TriniBuild</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm text-slate-400">
+        <a href="#how" class="hover:text-white transition">How it works</a>
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="hidden sm:inline text-sm text-slate-400 hover:text-white px-3 py-1.5">Log in</a>
+        <a href="#cta" class="text-sm font-semibold bg-cyan text-navy px-3.5 py-1.5 rounded-lg hover:bg-cyan/90 transition">Start free</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-glow relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 pt-12 pb-16 sm:pt-20 sm:pb-24 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot"></span>
+        Built for Trinidad & Tobago
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
+        Take a photo.<br />
+        <span class="gradient-text">AI builds your store.</span>
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed">
+        Snap any product — doubles, fish, fashion, services. AI writes the title, description, price & SEO. 
+        <strong class="text-slate-200">5 free listings for life.</strong> Sell with Cash on Pickup or PayPal.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-cyan text-navy font-bold text-base shadow-lg shadow-cyan/25 hover:bg-cyan/90 transition">
+          Snap & list free
+        </a>
+        <a href="#how" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-surface border border-white/10 text-slate-200 font-semibold text-base hover:border-white/20 transition">
+          See how it works
+        </a>
+      </div>
+      <p class="mt-4 text-xs text-slate-500">No credit card · No monthly fee on free plan · TT only</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500">
+        <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> KYC verified sellers</span>
+        <span class="flex items-center gap-1.5"><span class="text-cyan">$</span> Cash on Pickup + PayPal</span>
+        <span class="flex items-center gap-1.5"><span class="text-amber">★</span> Local support in Trinidad</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/5 bg-surface/40">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+      <p class="text-center text-xs text-slate-500 uppercase tracking-wider mb-5">Perfect for</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div><div class="text-2xl mb-1">🫓</div><p class="text-sm font-semibold">Street food</p><p class="text-[11px] text-slate-500">Doubles, roti, bake</p></div>
+        <div><div class="text-2xl mb-1">🐟</div><p class="text-sm font-semibold">Fish depots</p><p class="text-[11px] text-slate-500">Fresh catch, pre-order</p></div>
+        <div><div class="text-2xl mb-1">👗</div><p class="text-sm font-semibold">Retail & fashion</p><p class="text-[11px] text-slate-500">Clothes, crafts, goods</p></div>
+        <div><div class="text-2xl mb-1">🔧</div><p class="text-sm font-semibold">Services</p><p class="text-[11px] text-slate-500">Beauty, repair, pro</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="max-w-5xl mx-auto px-4 py-16 sm:py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Three steps. Live in minutes.</h2>
+      <p class="mt-2 text-slate-400 text-sm sm:text-base">No coding. No design skills. AI does the heavy lifting.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="rounded-2xl bg-surface border border-white/10 p-6 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-cyan/15 text-cyan flex items-center justify-center font-bold text-lg mb-4">1</div>
+        <h3 class="font-bold text-lg">Snap a photo</h3>
+        <p class="mt-2 text-sm text-slate-400 leading-relaxed">Use your phone camera. Product, plate of doubles, catch of the day — anything you sell.</p>
+      </div>
+      <div class="rounded-2xl bg-surface border border-white/10 p-6 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold text-lg mb-4">2</div>
+        <h3 class="font-bold text-lg">AI writes the listing</h3>
+        <p class="mt-2 text-sm text-slate-400 leading-relaxed">Title, description, suggested price in TTD, SEO tags. Review and edit if you want — or publish as-is.</p>
+      </div>
+      <div class="rounded-2xl bg-surface border border-white/10 p-6 card-hover">
+        <div class="w-10 h-10 rounded-xl bg-coral/15 text-coral flex items-center justify-center font-bold text-lg mb-4">3</div>
+        <h3 class="font-bold text-lg">Get paid</h3>
+        <p class="mt-2 text-sm text-slate-400 leading-relaxed">Buyers pay Cash on Pickup or PayPal. You keep the sale. Platform fee stays transparent and low.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="bg-surface/30 border-y border-white/5">
+    <div class="max-w-5xl mx-auto px-4 py-16 sm:py-20">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Everything you need to sell online in TT</h2>
+        <p class="mt-2 text-slate-400 text-sm sm:text-base">Store builder, marketplace, payments, documents — one platform.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">📸</div>
+          <h3 class="font-bold">AI photo → listing</h3>
+          <p class="mt-1.5 text-sm text-slate-400">Vision AI generates title, description, price and tags from one photo.</p>
+        </div>
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">🏗️</div>
+          <h3 class="font-bold">Store builder</h3>
+          <p class="mt-1.5 text-sm text-slate-400">Shopify-style templates. Colors, logo, collections, inventory. Fully customizable.</p>
+        </div>
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">🫓🐟</div>
+          <h3 class="font-bold">Street food & Fresh Catch</h3>
+          <p class="mt-1.5 text-sm text-slate-400">Discover and order doubles, roti, bake & shark, and same-day fish from local depots.</p>
+        </div>
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">💳</div>
+          <h3 class="font-bold">Cash + PayPal</h3>
+          <p class="mt-1.5 text-sm text-slate-400">COD for pickup. PayPal for online. More payment options coming later.</p>
+        </div>
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">📄</div>
+          <h3 class="font-bold">AI document builder</h3>
+          <p class="mt-1.5 text-sm text-slate-400">Invoices, menus, quotes, simple contracts — VAT-aware for Trinidad.</p>
+        </div>
+        <div class="rounded-2xl bg-navy/60 border border-white/10 p-5 card-hover">
+          <div class="text-2xl mb-3">📱</div>
+          <h3 class="font-bold">Mobile-first & fast</h3>
+          <p class="mt-1.5 text-sm text-slate-400">Built for phones first. SEO and local GEO tags for Port of Spain and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="max-w-5xl mx-auto px-4 py-16 sm:py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Simple pricing</h2>
+      <p class="mt-2 text-slate-400 text-sm sm:text-base">5 free listings for life. Upgrade when you need more power.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+      <div class="rounded-2xl border-2 border-emerald-500/40 bg-emerald-500/5 p-6 flex flex-col">
+        <p class="text-xs font-bold uppercase tracking-wider text-emerald-400">Free forever</p>
+        <p class="mt-3 text-4xl font-extrabold">$0</p>
+        <p class="text-sm text-slate-400 mt-1">No card required</p>
+        <ul class="mt-6 space-y-2.5 text-sm text-slate-300 flex-1">
+          <li class="flex gap-2"><span class="text-emerald-400 shrink-0">✓</span> 5 free listings for life</li>
+          <li class="flex gap-2"><span class="text-emerald-400 shrink-0">✓</span> AI photo → list</li>
+          <li class="flex gap-2"><span class="text-emerald-400 shrink-0">✓</span> Basic store page</li>
+          <li class="flex gap-2"><span class="text-emerald-400 shrink-0">✓</span> Cash on Pickup + PayPal</li>
+        </ul>
+        <a href="index.html" class="mt-6 block text-center py-3 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-sm border border-emerald-500/30 hover:bg-emerald-500/30 transition">Start free</a>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-surface p-6 flex flex-col">
+        <p class="text-xs font-bold uppercase tracking-wider text-cyan">Starter</p>
+        <p class="mt-3 text-4xl font-extrabold">$19<span class="text-base font-medium text-slate-400">/mo</span></p>
+        <p class="text-sm text-slate-400 mt-1">PayPal billing</p>
+        <ul class="mt-6 space-y-2.5 text-sm text-slate-300 flex-1">
+          <li class="flex gap-2"><span class="text-cyan shrink-0">✓</span> Unlimited listings</li>
+          <li class="flex gap-2"><span class="text-cyan shrink-0">✓</span> Full store builder + templates</li>
+          <li class="flex gap-2"><span class="text-cyan shrink-0">✓</span> Batch CSV + AI tools</li>
+          <li class="flex gap-2"><span class="text-cyan shrink-0">✓</span> Custom domain</li>
+          <li class="flex gap-2"><span class="text-cyan shrink-0">✓</span> Basic analytics</li>
+        </ul>
+        <a href="index.html" class="mt-6 block text-center py-3 rounded-xl bg-cyan text-navy font-bold text-sm hover:bg-cyan/90 transition">Upgrade with PayPal</a>
+      </div>
+      <div class="rounded-2xl border border-coral/40 bg-coral/5 p-6 flex flex-col relative">
+        <span class="absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded-full bg-coral text-navy">BEST VALUE</span>
+        <p class="text-xs font-bold uppercase tracking-wider text-coral">Pro</p>
+        <p class="mt-3 text-4xl font-extrabold">$49<span class="text-base font-medium text-slate-400">/mo</span></p>
+        <p class="text-sm text-slate-400 mt-1">PayPal billing</p>
+        <ul class="mt-6 space-y-2.5 text-sm text-slate-300 flex-1">
+          <li class="flex gap-2"><span class="text-coral shrink-0">✓</span> Everything in Starter</li>
+          <li class="flex gap-2"><span class="text-coral shrink-0">✓</span> AI Document Builder</li>
+          <li class="flex gap-2"><span class="text-coral shrink-0">✓</span> Loyalty, flash sales, bundles</li>
+          <li class="flex gap-2"><span class="text-coral shrink-0">✓</span> Advanced SEO & marketing</li>
+          <li class="flex gap-2"><span class="text-coral shrink-0">✓</span> Affiliates + priority support</li>
+        </ul>
+        <a href="index.html" class="mt-6 block text-center py-3 rounded-xl bg-coral text-navy font-bold text-sm hover:bg-coral/90 transition">Go Pro with PayPal</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to sell online in Trinidad?</h2>
+      <p class="mt-3 text-slate-400">Open the app, snap your first product, and publish. Your first 5 listings are free for life.</p>
+      <a href="index.html" class="mt-8 inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-cyan to-emerald-400 text-navy font-bold text-base shadow-lg shadow-cyan/20 hover:opacity-95 transition">
+        Snap & list free — no card needed
+      </a>
+      <p class="mt-4 text-xs text-slate-500">Mobile-first · Fast · SEO & GEO ready for TT</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5 bg-navy">
+    <div class="max-w-5xl mx-auto px-4 py-10">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan to-coral flex items-center justify-center font-bold text-navy text-xs">TB</div>
+          <div>
+            <p class="font-bold text-sm">TriniBuild</p>
+            <p class="text-[11px] text-slate-500">Trinidad & Tobago only</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-500">
+          <a href="#how" class="hover:text-slate-300">How it works</a>
+          <a href="#features" class="hover:text-slate-300">Features</a>
+          <a href="#pricing" class="hover:text-slate-300">Pricing</a>
+          <a href="index.html" class="hover:text-slate-300">Open app</a>
+        </div>
+      </div>
+      <p class="mt-8 text-[11px] text-slate-600 text-center sm:text-left">
+        © 2026 TriniBuild. Cash on Pickup & PayPal. Not affiliated with Shopify or Wix.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

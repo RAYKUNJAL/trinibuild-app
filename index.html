@@ -1,1 +1,194 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en-TT">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"/>
+<meta name="theme-color" content="#0f172a"/>
+<title>TriniBuild</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{navy:'#0f172a',cyan:'#00b4d8',coral:'#ff6b6b',surface:'#1e293b',wa:'#25D366'}}}}</script>
+<style>body{font-family:system-ui;background:#0f172a;color:#f1f5f9;margin:0}.screen{display:none}.screen.on{display:block}.pb{padding-bottom:5.5rem}.sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;max-width:32rem;margin:0 auto;background:#1e293b;border-radius:1.25rem 1.25rem 0 0;max-height:85vh;overflow:auto;transform:translateY(110%);transition:.28s}.sheet.open{transform:translateY(0)}.bd{position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.55);opacity:0;pointer-events:none}.bd.open{opacity:1;pointer-events:auto}</style>
+</head>
+<body>
+<header class="sticky top-0 z-40 bg-navy/95 border-b border-white/5 px-4 py-3 flex justify-between items-center max-w-lg mx-auto">
+<div class="flex gap-2 items-center"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan to-coral flex items-center justify-center font-bold text-navy text-sm">TB</div><div><div class="font-bold">TriniBuild</div><div class="text-[10px] text-slate-400">TT · AI Store</div></div></div>
+<div id="badge" class="text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/30">5 free left</div>
+</header>
+<main class="max-w-lg mx-auto pb">
+<section id="s-auth" class="screen on px-4 pt-8">
+<div class="text-center mb-6"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyan to-coral flex items-center justify-center font-bold text-navy text-2xl mb-3">TB</div>
+<h1 class="font-extrabold text-2xl">Welcome to TriniBuild</h1>
+<p class="text-sm text-slate-400 mt-2">5 free listings for life · Trinidad only</p></div>
+<input id="name" class="w-full mb-3 bg-surface border border-white/10 rounded-xl px-4 py-3 text-sm" placeholder="Your name"/>
+<input id="email" type="email" class="w-full mb-4 bg-surface border border-white/10 rounded-xl px-4 py-3 text-sm" placeholder="Email"/>
+<button onclick="auth()" class="w-full py-3.5 rounded-xl bg-cyan text-navy font-bold text-sm">Continue free</button>
+</section>
+<section id="s-home" class="screen px-4 pt-5">
+<div class="rounded-2xl bg-gradient-to-br from-cyan/20 to-coral/10 border border-cyan/30 p-5 mb-4">
+<h2 class="font-bold text-lg">Take a photo → AI lists it</h2>
+<p class="text-xs text-slate-400 mt-1">AI writes title, description, price & tags.</p>
+<button onclick="go('snap')" class="mt-4 w-full py-3.5 rounded-xl bg-cyan text-navy font-bold text-sm">Snap & List with AI</button>
+</div>
+<div class="rounded-2xl bg-surface border border-white/10 p-4 mb-4">
+<p class="text-xs text-slate-400">Free listings remaining</p>
+<p class="font-bold text-xl"><span id="fc">5</span> for life</p>
+</div>
+<div class="grid grid-cols-2 gap-3 mb-4">
+<button onclick="go('builder')" class="p-4 rounded-2xl bg-surface border border-white/10 text-left"><span class="text-2xl">🏗️</span><p class="font-bold text-sm mt-1">Store Builder</p></button>
+<button onclick="go('vat')" class="p-4 rounded-2xl bg-surface border border-white/10 text-left"><span class="text-2xl">🧾</span><p class="font-bold text-sm mt-1">VAT Tracker</p></button>
+<button onclick="go('aff')" class="p-4 rounded-2xl bg-surface border border-white/10 text-left"><span class="text-2xl">🤝</span><p class="font-bold text-sm mt-1">Affiliates</p></button>
+<button onclick="go('market')" class="p-4 rounded-2xl bg-surface border border-white/10 text-left"><span class="text-2xl">🫓</span><p class="font-bold text-sm mt-1">Marketplace</p></button>
+</div>
+<div id="homeV" class="space-y-3"></div>
+</section>
+<section id="s-snap" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">Snap & List with AI</h2>
+<div id="up" class="mt-6 rounded-2xl border-2 border-dashed border-white/20 p-8 text-center">
+<div class="text-4xl mb-2">📷</div>
+<p class="font-semibold text-sm">Choose a photo</p>
+<input type="file" id="pic" accept="image/*" capture="environment" class="hidden"/>
+<button onclick="document.getElementById('pic').click()" class="mt-4 px-5 py-2.5 rounded-xl bg-cyan text-navy text-sm font-bold">Choose photo</button>
+</div>
+<div id="load" class="hidden mt-8 text-center"><div class="inline-block w-10 h-10 border-2 border-cyan border-t-transparent rounded-full animate-spin"></div><p class="text-sm text-slate-400 mt-3">AI analyzing…</p></div>
+<div id="res" class="hidden mt-6 space-y-3">
+<img id="img" class="w-full aspect-square object-cover rounded-2xl border border-white/10"/>
+<input id="title" class="w-full bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm" placeholder="Title"/>
+<textarea id="desc" rows="2" class="w-full bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm" placeholder="Description"></textarea>
+<input id="price" type="number" class="w-full bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm" placeholder="Price TTD"/>
+<button onclick="publish()" class="w-full py-3.5 rounded-xl bg-cyan text-navy font-bold text-sm">Publish (1 free listing)</button>
+</div>
+</section>
+<section id="s-market" class="screen px-4 pt-4">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl mb-3">Marketplace</h2>
+<button id="cartB" onclick="cart()" class="hidden text-xs font-bold text-cyan mb-2">Cart (<span id="cn">0</span>)</button>
+<div id="vl" class="space-y-3"></div>
+</section>
+<section id="s-builder" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">Store Builder</h2>
+<input id="sn" class="w-full mt-3 bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm" placeholder="Store name" oninput="prev()"/>
+<input id="st" class="w-full mt-2 bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm" placeholder="Tagline" oninput="prev()"/>
+<div class="mt-4 rounded-2xl border border-white/10 p-4 bg-navy"><p id="pn" class="font-bold text-lg">Your Store</p><p id="pt" class="text-sm text-slate-400">Tagline</p></div>
+<button onclick="saveStore()" class="mt-4 w-full py-3 rounded-xl bg-cyan text-navy font-bold text-sm">Save store</button>
+</section>
+<section id="s-vat" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">VAT Tracker · 12.5%</h2>
+<input id="vi" type="number" placeholder="Amount excl. VAT" oninput="cv()" class="w-full mt-3 bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-sm"/>
+<p class="mt-2 text-sm">VAT: <span id="va">$0.00</span> · Total: <span id="vt" class="text-cyan">$0.00</span></p>
+<p class="mt-3 text-sm">From orders — Sales <span id="vs">$0.00</span> · VAT <span id="vc" class="text-cyan">$0.00</span></p>
+</section>
+<section id="s-aff" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">Affiliates</h2>
+<input id="al" readonly class="w-full mt-3 bg-surface border border-white/10 rounded-xl px-3 py-2.5 text-xs"/>
+<button onclick="copyL()" class="mt-2 w-full py-2.5 rounded-xl bg-cyan text-navy font-bold text-sm">Copy link</button>
+<button onclick="wa(null,'Join TriniBuild: '+al.value)" class="mt-2 w-full py-2.5 rounded-xl bg-wa/15 text-wa font-bold text-sm border border-wa/30">Share WhatsApp</button>
+</section>
+<section id="s-orders" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">My orders</h2>
+<div id="ol" class="mt-3 space-y-2"></div>
+</section>
+<section id="s-listings" class="screen px-4 pt-5">
+<button onclick="go('home')" class="text-sm text-slate-400 mb-3">← Back</button>
+<h2 class="font-bold text-xl">My listings</h2>
+<div id="ll" class="mt-3 space-y-2"></div>
+</section>
+</main>
+<nav class="fixed bottom-0 inset-x-0 bg-navy/95 border-t border-white/10">
+<div class="max-w-lg mx-auto grid grid-cols-4 h-16 text-[10px] font-medium">
+<button onclick="go('home')" class="text-cyan">Home</button>
+<button onclick="go('snap')" class="text-slate-400">Snap</button>
+<button onclick="go('market')" class="text-slate-400">Market</button>
+<button onclick="go('orders')" class="text-slate-400">Orders</button>
+</div></nav>
+<div id="bd" class="bd" onclick="closeS()"></div>
+<div id="sh" class="sheet"><div class="p-4 border-b border-white/10 flex justify-between"><h3 id="sht" class="font-bold">Order</h3><button onclick="closeS()" class="text-slate-400 text-sm">Close</button></div><div class="p-4" id="shb"></div></div>
+<div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[70] hidden px-4 py-2 rounded-xl bg-emerald-500 text-navy text-sm font-semibold"></div>
+<script>
+const K='tb_v4';
+let S=JSON.parse(localStorage.getItem(K)||'null')||{user:null,free:5,list:[],orders:[],cart:[],store:{n:'',t:''},vat:[],aff:{c:0,e:0,code:null}};
+const save=()=>localStorage.setItem(K,JSON.stringify(S));
+const V=[{id:1,n:'Doubles Central',e:'🥗',eta:'5–8 min',p:'18685550101',m:[{id:'d1',n:'Spicy Doubles',p:8},{id:'d2',n:'Chholar Bhaji',p:10}]},{id:2,n:'Roti King',e:'🫓',eta:'8–12 min',p:'18685550102',m:[{id:'r1',n:'Chicken Roti',p:35}]},{id:3,n:'Maracas Depot',e:'⚓',eta:'Same day',p:'18685550104',m:[{id:'f1',n:'Kingfish (lb)',p:45},{id:'f2',n:'Red Snapper (lb)',p:55}]}];
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2500)}
+function wa(ph,tx){window.open(ph?`https://wa.me/${ph}?text=${encodeURIComponent(tx||'')}`:`https://wa.me/?text=${encodeURIComponent(tx||'')}`,'_blank')}
+function go(n){
+ if(!S.user&&['builder','vat','aff','orders','listings'].includes(n)){toast('Sign in first');n='auth'}
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+ document.getElementById('s-'+n).classList.add('on');
+ if(n==='home'||n==='market')rv();
+ if(n==='orders')ro();
+ if(n==='listings')rl();
+ if(n==='vat'){const s=S.vat.reduce((a,x)=>a+x.s,0),v=S.vat.reduce((a,x)=>a+x.v,0);vs.textContent='$'+s.toFixed(2);vc.textContent='$'+v.toFixed(2)}
+ if(n==='aff'){al.value='https://trinibuild.com/?ref='+(S.aff.code||'GUEST')}
+ if(n==='builder'){sn.value=S.store.n||'';st.value=S.store.t||'';prev()}
+ fc.textContent=S.free;badge.textContent=S.free+' free left';
+ window.scrollTo(0,0);
+}
+function auth(){
+ const n=name.value.trim(),e=email.value.trim();
+ if(!n||!e)return toast('Enter name + email');
+ S.user={n,e};if(!S.aff.code)S.aff.code='TB'+Math.random().toString(36).slice(2,7).toUpperCase();
+ save();go('home');toast('Welcome '+n);
+}
+pic.onchange=e=>{
+ const f=e.target.files&&e.target.files[0];if(!f)return;
+ up.classList.add('hidden');res.classList.add('hidden');load.classList.remove('hidden');
+ const r=new FileReader();r.onload=ev=>{img.src=ev.target.result;setTimeout(()=>{load.classList.add('hidden');res.classList.remove('hidden');
+ const s=[{t:'Spicy Doubles (2 pcs)',d:'Classic Trinidad doubles with channa and bara.',p:8},{t:'Kingfish Steaks',d:'Fresh same-day catch.',p:45},{t:'Beaded Earrings',d:'Handmade Caribbean colours.',p:75}][Math.floor(Math.random()*3)];
+ title.value=s.t;desc.value=s.d;price.value=s.p},1000)};r.readAsDataURL(f);
+};
+function publish(){
+ if(!S.user)return go('auth');
+ if(S.free<=0)return toast('No free listings');
+ S.list.unshift({t:title.value||'Listing',p:price.value||0,d:desc.value,img:img.src});
+ S.free--;save();toast('Published! '+S.free+' free left');go('listings');
+}
+function rv(){
+ vl.innerHTML=V.map(v=>`<div class="bg-surface rounded-2xl border border-white/10 p-4 flex gap-3"><div class="text-2xl">${v.e}</div><div class="flex-1"><p class="font-bold text-sm">${v.n}</p><p class="text-[11px] text-slate-400">${v.eta}</p><div class="mt-2 flex gap-2"><button onclick="ov(${v.id})" class="flex-1 py-2 rounded-xl bg-cyan text-navy text-xs font-bold">Order</button><button onclick="wa('${v.p}','Hi ${v.n}, saw you on TriniBuild')" class="flex-1 py-2 rounded-xl bg-wa/15 text-wa text-xs font-bold border border-wa/30">Chat</button></div></div></div>`).join('');
+ homeV.innerHTML=V.slice(0,2).map(v=>`<div class="bg-surface rounded-2xl border border-white/10 p-3 flex gap-3 items-center"><span class="text-xl">${v.e}</span><div class="flex-1"><p class="font-bold text-sm">${v.n}</p></div><button onclick="ov(${v.id})" class="px-3 py-1.5 rounded-lg bg-cyan text-navy text-xs font-bold">Order</button></div>`).join('');
+ uc();
+}
+function ov(id){
+ const v=V.find(x=>x.id===id);sht.textContent=v.n;
+ shb.innerHTML=v.m.map(m=>`<div class="flex justify-between p-3 rounded-xl bg-navy mb-2"><div><p class="font-semibold text-sm">${m.n}</p><p class="text-xs text-slate-400">$${m.p} TTD</p></div><button onclick="ac(${v.id},'${m.id}')" class="px-3 py-1.5 rounded-lg bg-cyan text-navy text-xs font-bold">Add</button></div>`).join('')+'<button onclick="cart()" class="w-full mt-2 py-3 rounded-xl bg-surface border border-white/15 text-sm font-bold">Checkout</button>';
+ openS();
+}
+function ac(vid,iid){
+ const v=V.find(x=>x.id===vid),m=v.m.find(x=>x.id===iid);
+ if(S.cart.length&&S.cart[0].vid!==vid){if(!confirm('Clear other vendor cart?'))return;S.cart=[]}
+ const e=S.cart.find(c=>c.iid===iid);if(e)e.q++;else S.cart.push({vid,vn:v.n,iid,n:m.n,p:m.p,q:1});
+ save();uc();toast('Added '+m.n);
+}
+function uc(){const n=S.cart.reduce((s,c)=>s+c.q,0);if(n){cartB.classList.remove('hidden');cn.textContent=n}else cartB.classList.add('hidden')}
+function cart(){
+ if(!S.cart.length)return toast('Cart empty');
+ const sub=S.cart.reduce((s,c)=>s+c.p*c.q,0),tot=sub+0.5;
+ sht.textContent='Checkout';
+ shb.innerHTML=S.cart.map(c=>`<div class="flex justify-between text-sm mb-1"><span>${c.q}× ${c.n}</span><span>$${(c.p*c.q).toFixed(2)}</span></div>`).join('')+`<div class="font-bold flex justify-between mt-2 border-t border-white/10 pt-2"><span>Total</span><span>$${tot.toFixed(2)} TTD</span></div>
+<button onclick="po('cod')" class="w-full mt-4 py-3.5 rounded-xl bg-cyan text-navy font-bold text-sm">Cash on Pickup</button>
+<button onclick="po('paypal')" class="w-full mt-2 py-3.5 rounded-xl bg-[#0070ba] text-white font-bold text-sm">Pay with PayPal</button>`;
+ openS();
+}
+function po(m){
+ if(!S.user){closeS();go('auth');return toast('Sign in first')}
+ const sub=S.cart.reduce((s,c)=>s+c.p*c.q,0),tot=sub+0.5,vat=+(sub*0.125).toFixed(2);
+ S.orders.unshift({id:'TB-'+Date.now().toString().slice(-6),items:[...S.cart],vn:S.cart[0].vn,m,tot,vat,st:m==='cod'?'Awaiting pickup':'Paid'});
+ S.vat.unshift({s:sub,v:vat});S.cart=[];save();uc();closeS();
+ toast(m==='cod'?'Order placed — COD':'PayPal demo — paid');go('orders');
+}
+function ro(){ol.innerHTML=S.orders.length?S.orders.map(o=>`<div class="bg-surface rounded-xl border border-white/10 p-3"><p class="font-bold text-sm">${o.id}</p><p class="text-xs text-slate-400">${o.vn} · ${o.m}</p><p class="font-bold">$${o.tot.toFixed(2)}</p></div>`).join(''):'<p class="text-slate-500 text-sm">No orders yet</p>'}
+function rl(){ll.innerHTML=S.list.length?S.list.map(l=>`<div class="bg-surface rounded-xl border border-white/10 p-3 flex gap-3">${l.img?`<img src="${l.img}" class="w-12 h-12 rounded-lg object-cover"/>`:''}<div><p class="font-bold text-sm">${l.t}</p><p class="text-xs text-slate-400">$${l.p} TTD</p></div></div>`).join(''):'<p class="text-slate-500 text-sm">No listings yet</p>'}
+function openS(){bd.classList.add('open');sh.classList.add('open')}
+function closeS(){bd.classList.remove('open');sh.classList.remove('open')}
+function prev(){pn.textContent=sn.value||'Your Store';pt.textContent=st.value||'Tagline'}
+function saveStore(){if(!S.user)return go('auth');S.store={n:sn.value||'My Store',t:st.value||''};save();toast('Store saved')}
+function cv(){const n=parseFloat(vi.value)||0;va.textContent='$'+(n*0.125).toFixed(2);vt.textContent='$'+(n*1.125).toFixed(2)}
+function copyL(){al.select();navigator.clipboard&&navigator.clipboard.writeText(al.value);toast('Copied')}
+if(S.user)go('home');else go('auth');rv();
+</script>
+</body>
+</html>
